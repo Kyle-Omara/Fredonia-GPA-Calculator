@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<title>GPA_calc_page_1.html</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+</style>
+
+
+<!--Start of Body-->
+<body class="w3-display-container w3-content" style="max-width:1500px; background-color:grey">
+  <div class="w3-display-middle w3-padding w3-col l6 m8 w3-center" style="height:100%">
+    <div style="background-color:#0038a8" class="w3-container w3-text-white">
+      <h2><i class="fa fa-graduation-cap w3-margin-right"></i>GPA Calculator</h2>
+    </div>
+    <div class="w3-container w3-white w3-padding-16" class="w3-center">
+
+
+<!--Start of Form 1-->
+<form id="form1" action="" method="">
+  <div class="w3-row-padding" style="margin:0 -16px;">
+    <div class="w3-half w3-margin-bottom">
+      <label>Total Credit Hours Completed:</label>
+      <input class="w3-input w3-border" type="number" placeholder="i.e. 20" name="TotalCreditHours" min="0" required>
+    </div>
+    <div class="w3-half">
+      <label>Current GPA:</label>
+      <input class="w3-input w3-border" type="number" placeholder="i.e. 3.0" name="CurrentGPA" min="0" max="4" step=".1" required>
+    </div>
+  </div>
+
+  <!--<div class="w3-row-padding" style="margin:8px -16px;">
+    <div class="w3-container  w3-quarter">
+      <p>Needs an empty <p> tag to register container properly</p>
+    </div>
+    <div class="w3-margin-bottom w3-half w3-container">
+      <label>Intended Major (Optional):</label>
+      <select class="w3-input w3-border" type="text" placeholder="N/A" name="IntendedMajor">
+        <option value="N/A">N/A</option>
+        <option value="ComputerScience">Computer Science</option>
+        <option value="Biology">Biology</option>
+        <option value="Mathematics">Mathematics</option>
+      </select>
+    </div>
+    <div class="w3-container w3-quarter">
+      <p>Needs an empty <p> tag to register container properly</p>
+    </div>
+  </div>-->
+  
+  <button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="submit"><i class="fa fa-times w3-margin-right"></i>Clear</button>
+  <button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="submit"><i class="fa fa-calculator w3-margin-right"></i>Calculate</button>
+</form>
+<!--End of Form 1-->
+
+    </div>
+  </div>
+</body>
+</html>

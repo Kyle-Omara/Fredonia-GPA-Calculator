@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<title>GPA_calc_page_2.html</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+</style>
+
+
+<!--Start of Body-->
+<body class="w3-display-container w3-content" style="max-width:1500px; background-color:grey">
+  <div class="w3-display-middle w3-padding w3-col l6 m8 w3-center" style="height:100%">
+    <div style="background-color:#0038a8" class="w3-container w3-text-white">
+      <h2><i class="fa fa-graduation-cap w3-margin-right"></i>GPA Calculator</h2>
+    </div>
+    <div class="w3-container w3-white w3-padding-16" class="w3-center">
+
+<!--Start of Form 2-->
+<form id="form2" action="" method="" class="w3-margin">
+<div class="w3-row-padding" style="margin:0 -16px;">
+<h4>What would it take to raise my GPA to x.xx?</h4>
+</div>
+<div class="w3-row-padding w3-margin-bottom" style="margin:0 -16px">
+  <div class="w3-quarter"><p></p></div>
+  <div class="w3-half">
+    <input class="w3-input w3-border" type="number" placeholder="i.e. 3.5" name="TargetGPA" min="0" max="4" step=".1" required>
+  </div>
+  <div class="w3-quarter"><p></p></div>
+</div>
+  <button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="submit"><i class="fa fa-times w3-margin-right"></i>Clear</button>
+  <button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="submit"><i class="fa fa-calculator w3-margin-right"></i>Calculate</button>
+<hr style="border-color:grey">
+</form>
+<!--End of Form 2-->
+
+<!--Start of Form3-->
+<form id="form3" action="" method="" class="w3-margin">
+<div class="w3-row-padding" style="margin:0 -16px">
+<h4>What does my average GPA need to be this semester to reach my goal GPA?</h4>
+</div>
+<div class="w3-row-padding w3-margin-bottom" style="margin:0 -16px">
+  <div class="w3-half">
+    <label>Goal GPA:</label>
+    <input class="w3-input w3-border" type="number" placeholder="i.e. 3.0" name="GoalGPA" min="0" max="4" step =".1" required>
+  </div>
+  <div class="w3-half">
+    <label>Number of credit hours taken this semester:</label>
+    <input class="w3-input w3-border" type="number" placeholder="i.e. 20" name="SemesterCredits" min="0" required>
+  </div>
+</div>
+<button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="submit"><i class="fa fa-times w3-margin-right"></i>Clear</button>
+<button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="submit"><i class="fa fa-calculator w3-margin-right"></i>Calculate</button>
+<hr style="border-color:grey">
+</form>
+<!--End of Form3-->
+
+<!--Start of Form4-->
+<form id="form4" action="" method="" class="w3-margin">
+<div class="w3-row-padding w3-margin-bottom" style="margin:0 -16px">
+  <div class="w3-half">
+    <label>How many additional credit hours will it take to raise my GPA to:</label>
+    <input class="w3-input w3-border" type="number" placeholder="i.e. 3.0" name="RaiseToGPA" min="0" max="4" step=".1" required>
+  </div>
+  <div class="w3-half" style="margin-top:22px">
+    <label>If I can maintain an average of:</label>
+    <input class="w3-input w3-border" type="number" placeholder="i.e. 3.0" name="MaintainableGPA" min="0" max="4" step=".1" required>
+  </div>
+</div>
+<button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="submit"><i class="fa fa-times w3-margin-right"></i>Clear</button>
+<button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="submit"><i class="fa fa-calculator w3-margin-right"></i>Calculate</button>
+</form>
+<!--End of Form4-->
+
+    </div>
+  </div>
+</body>
+</html>
