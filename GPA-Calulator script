@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Please enter the following information to begin:</p>
+
+<div id="div1">
+  <label>Total credit hours completed:</label>
+  <input id="div1OldCredit" type="number" name="div1OldCredit">
+  <br>
+  <label>Current GPA:</label>
+  <input id="div1OldGPA" type="number" name="div1OldGPA">
+  <br>
+<!--  <label>Intended Major:</label>
+  <input id="div1IntendedMajor" type="number" name="div1IntendedMajor">
+  <br> -->
+  <button type="button" onclick="test()">Continue</button>
+  <button type="button" onclick="clearDiv1()">Clear</button><br>
+</div>
+
+
+<p>What would it take to raise my Overall GPA to x.xx?</p>
+<div id="div2">
+  <label>Raise my Overall GPA to:</label>
+  <input id="div2TargetGPA" type="number" name="div2TargetGPA">
+  <br>
+  <button type="button" onclick="raiseOverallGPA()">Calculate</button>
+  <button type="button" onclick="clearDiv2()">Clear</button><br>
+  <textarea id="div2Output" rows="5" cols="35" ></textarea><br>
+</div>
+
+<br>
+<p>What does my average GPA need to be this semester to reach my goal GPA?</p>
+<div id="div3">
+  <label>Goal GPA:</label>
+  <input id="div3TargetGPA" type="number" name="div3TargetGPA">
+  <br>
+  <label>Number of credit hours taken this semester:</label>
+  <input id="div3SemesterCredit" type="number" name ="div3SemesterCredit">
+  <br>
+  <button type="button" onclick="calculateSemesterGPA()">Calculate</button>
+  <button type="button" onclick="clearDiv3()">Clear</button><br>
+  <p id="div3Output"></p><br>
+</div>
+
+<br>
+<div id="div4">
+  <label>How many additional credit hours will it take to raise my GPA to:</label>
+  <input id="div4TargetGPA" type="number" name="div4TargetGPA">
+  <br>
+  <label>If I can maintain an average of:</label>
+  <input id="div4SemesterGPA" type="number" name="div4SemesterGPA">
+  <br>
+  <button type="button" onclick="calculateSemesterCredit()">Calculate</button>
+  <button type="button" onclick="clearDiv4()">Clear</button><br>
+  <p id="div4Output"></p><br>
+</div>
+
+
+<script>
+/* GPA calculations are based off of the formula:
+  C = ((A*B) + (D * E)) / A + D
+  where:
+  A = oldCredit
+  B = oldGPA
+  C = targetGPA
+  D = semesterCredit
+  E = semesterGPA
+*/
+
+ var oldGPA = 0,
+ oldCredit = 0,
+ semesterGPA = 0,
+ semesterCredit = 0,
+ targetGPA = 0;
+ text = "";
+
+function raiseOverallGPA(){
+  oldGPA = document.getElementById("div1OldGPA").value;
+  oldCredit = document.getElementById("div1OldCredit").value;
+  targetGPA = document.getElementById("div2TargetGPA").value;
+
+  for(i = 4.0; i >= targetGPA; i-=0.1){
+    var CA = targetGPA * oldCredit,
+    AB = oldCredit * oldGPA,
+    EC = i - targetGPA;
+    semesterCredit  = (CA - AB) / EC,
+    F = Math.round(semesterCredit * 2) /2,   // rounds to the nearest .5 credit
+    G = Math.round(i*100)/100;               // rounds to the nearest .1 GPA
+
+    text += F  + " credits with " + G + " GPA " + "\n";
+  }
+
+  document.getElementById("div2Output").innerHTML = text;
+}
+
+function calculateSemesterGPA(){
+  // formula: (E = C * (A+D) - AB) / D
+  oldGPA = Number(document.getElementById("div1OldGPA").value);
+  oldCredit = Number(document.getElementById("div1OldCredit").value);
+  targetGPA = Number(document.getElementById("div3TargetGPA").value);
+  semesterCredit = Number(document.getElementById("div3SemesterCredit").value);
+
+  var a = oldCredit + semesterCredit, b = oldGPA * oldCredit;
+
+  semesterGPA = ((targetGPA * a) - (b)) / (semesterCredit * 1.0);
+  document.getElementById("div3Output").innerHTML = Math.round(semesterGPA * 100) / 100; 
+}
+
+function calculateSemesterCredit(){
+  // formula: D = (CA - AB) / (E - C)
+  oldGPA = Number(document.getElementById("div1OldGPA").value);
+  oldCredit = Number(document.getElementById("div1OldCredit").value);
+  targetGPA = Number(document.getElementById("div4TargetGPA").value);
+  semesterGPA = Number(document.getElementById("div4SemesterGPA").value);
+
+  semesterCredit = ((targetGPA * oldCredit) - (oldCredit * oldGPA)) / (semesterGPA - targetGPA);
+
+  document.getElementById("div4Output").innerHTML = Math.round(semesterCredit * 100) / 100;
+}
+
+
+// clearDiv functions replace the input values with "" or 0 when the Clear button is clicked
+function clearDiv1(){
+  document.getElementById("div1OldCredit").value=0;
+  document.getElementById("div1OldGPA").value=0;
+  document.getElementById("div1IntendedMajor").value=0;
+}
+function clearDiv2(){
+  document.getElementById("div2TargetGPA").value=0;
+  document.getElementById("div2Output").innerHTML="";
+}
+function clearDiv3(){
+  document.getElementById("div3TargetGPA").value=0;
+  document.getElementById("div3SemesterCredit").value=0;
+  document.getElementById("div3Output").innerHTML="";
+}
+function clearDiv4(){
+  document.getElementById("div4TargetGPA").value=0;
+  document.getElementById("div4SemesterGPA").value=0;
+  document.getElementById("div4Output").innerHTML="";
+}
+
+</script>
+</body>
+</html>
