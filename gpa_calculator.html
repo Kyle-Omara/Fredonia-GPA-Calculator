@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<title>GPA Calculator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+</style>
+
+
+<!--Start of Body-->
+<body onLoad="hideForm()" class="w3-display-container w3-content" style="max-width:1500px; background-color:grey">
+  <div class="w3-display-middle w3-padding w3-col l6 m8 w3-center" style="height:100%">
+    <div style="background-color:#0038a8" class="w3-container w3-text-white">
+      <h2><i class="fa fa-graduation-cap w3-margin-right"></i>GPA Calculator</h2>
+    </div>
+    <div class="w3-container w3-white w3-padding-16" class="w3-center">
+
+<!--Start of Form 1-->
+<form id="form1" action="" method="">
+  <div class="w3-row-padding" style="margin:0 -16px;">
+    <div class="w3-half w3-margin-bottom">
+      <label>Total Credit Hours Completed:</label>
+      <input class="w3-input w3-border" type="number" placeholder="i.e. 20" id="div1OldCredit" name="div1OldCredit" min="0" required>
+    </div>
+    <div class="w3-half">
+      <label>Current GPA:</label>
+      <input class="w3-input w3-border" type="number" placeholder="i.e. 3.0" id="div1OldGPA" name="div1OldGPA" min="0" max="4" step=".1" required>
+    </div>
+  </div>
+
+  <!--<div class="w3-row-padding" style="margin:8px -16px;">
+    <div class="w3-container  w3-quarter">
+      <p>Needs an empty <p> tag to register container properly</p>
+    </div>
+    <div class="w3-margin-bottom w3-half w3-container">
+      <label>Intended Major (Optional):</label>
+      <select class="w3-input w3-border" type="text" placeholder="N/A" name="IntendedMajor">
+        <option value="N/A">N/A</option>
+        <option value="ComputerScience">Computer Science</option>
+        <option value="Biology">Biology</option>
+        <option value="Mathematics">Mathematics</option>
+      </select>
+    </div>
+    <div class="w3-container w3-quarter">
+      <p>Needs an empty <p> tag to register container properly</p>
+    </div>
+  </div>-->
+
+  <button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="reset"><i class="fa fa-times w3-margin-right"></i>Clear</button>
+  <button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="button" onclick="showForm()"><i class="fa fa-calculator w3-margin-right"></i>Continue</button>
+<hr style="border-color:grey">
+</form>
+<!--End of Form 1-->
+
+<!--Start of Form 2-->
+<form id="form2" action="" method="" class="w3-margin">
+<div class="w3-row-padding" style="margin:0 -16px;">
+<h4>What would it take to raise my GPA to x.xx?</h4>
+</div>
+<div class="w3-row-padding w3-margin-bottom" style="margin:0 -16px">
+  <div class="w3-quarter"><p></p></div>
+  <div class="w3-half">
+    <input class="w3-input w3-border" type="number" placeholder="i.e. 3.5" id="div2TargetGPA" name="div2TargetGPA" min="0" max="4" step=".1" required>
+  </div>
+  <div class="w3-quarter"><p></p></div>
+</div>
+<textarea id="div2Output" rows="5" cols="35" ></textarea><br> <!--new -->
+  <button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="reset" onclick="clearDiv2()"><i class="fa fa-times w3-margin-right"></i>Clear</button>
+  <button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="button" onclick="raiseOverallGPA()"><i class="fa fa-calculator w3-margin-right"></i>Calculate</button>
+<hr style="border-color:grey">
+</form>
+<!--End of Form 2-->
+
+<!--Start of Form3-->
+<form id="form3" action="" method="" class="w3-margin">
+<div class="w3-row-padding" style="margin:0 -16px">
+<h4>What does my average GPA need to be this semester to reach my goal GPA?</h4>
+</div>
+<div class="w3-row-padding w3-margin-bottom" style="margin:0 -16px">
+  <div class="w3-half" style="margin-top:22px">
+    <label>Goal GPA:</label>
+
+    <input class="w3-input w3-border" type="number" placeholder="i.e. 3.0" id="div3TargetGPA" name="div3TargetGPA" min="0" max="4" step =".1" required>
+  </div>
+  <div class="w3-half" >
+    <label>Number of credit hours taken this semester:</label>
+    <input class="w3-input w3-border" type="number" placeholder="i.e. 20" id="div3SemesterCredit" name="div3SemesterCredit" min="0" required>
+  </div>
+</div>
+<button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="reset"><i class="fa fa-times w3-margin-right"></i>Clear</button>
+<button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="button" onclick="calculateSemesterGPA()"><i class="fa fa-calculator w3-margin-right"></i>Calculate</button>
+<p id="div3Output"></p><br>
+<hr style="border-color:grey">
+</form>
+<!--End of Form3-->
+
+<!--Start of Form4-->
+<form id="form4" action="" method="" class="w3-margin">
+<div class="w3-row-padding w3-margin-bottom" style="margin:0 -16px">
+  <div class="w3-half">
+    <label>How many additional credit hours will it take to raise my GPA to:</label>
+    <input class="w3-input w3-border" type="number" placeholder="i.e. 3.0" id="div4TargetGPA" name="div4TargetGPA" min="0" max="4" step=".1" required>
+  </div>
+  <div class="w3-half" style="margin-top:22px">
+    <label>If I can maintain an average of:</label>
+    <input class="w3-input w3-border" type="number" placeholder="i.e. 3.0" id="div4SemesterGPA" name="div4SemesterGPA" min="0" max="4" step=".1" required>
+  </div>
+</div>
+<button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="reset"><i class="fa fa-times w3-margin-right"></i>Clear</button>
+<button class="w3-button w3-dark-grey w3-margin-bottom" style="width:150px" type="button" onclick="calculateSemesterCredit()"><i class="fa fa-calculator w3-margin-right"></i>Calculate</button>
+<p id="div4Output"></p><br>
+<hr style="border-color:grey">
+</form>
+<!--End of Form4-->
+
+<footer>
+<div class="w3-display-bottom w3-padding w3-col l6 m8 w3-center" style="height: 100%">
+  <div style="background-color:#0038a8" class="w3-container w3-text-white">
+    <h2><img style='height: 100%; width: 100%; object-fit: contain' src="http://home.fredonia.edu/sites/default/files/images/fredlogowhite.png"></h2>
+  </div>
+  <div class="w3-container w3-white w3-padding-16" class="w3-center">
+
+</footer>
+
+<sup>
+  Developed by: <br>
+  Kyle O'Mara <br>
+  Miles Pierce <br>
+  Kermit Mitchell III <br>
+</sup>
+</div>
+
+
+<script>
+/* GPA calculations are based off of the formula:
+  C = ((A*B) + (D * E)) / A + D
+  where:
+  A = oldCredit
+  B = oldGPA
+  C = targetGPA
+  D = semesterCredit
+  E = semesterGPA
+*/
+
+ var oldGPA = 0,
+ oldCredit = 0,
+ semesterGPA = 0,
+ semesterCredit = 0,
+ targetGPA = 0;
+ text = "";
+
+function raiseOverallGPA(){
+  oldGPA = document.getElementById("div1OldGPA").value;
+  oldCredit = document.getElementById("div1OldCredit").value;
+  targetGPA = document.getElementById("div2TargetGPA").value;
+
+  for(i = 4.0; i >= targetGPA; i-=0.1){
+    var CA = targetGPA * oldCredit,
+    AB = oldCredit * oldGPA,
+    EC = i - targetGPA;
+    semesterCredit  = (CA - AB) / EC,
+    F = Math.round(semesterCredit * 2) /2,   // rounds to the nearest .5 credit
+    G = Math.round(i*100)/100;               // rounds to the nearest .1 GPA
+
+    text += F  + " credits with " + G + " GPA " + "\n";
+  }
+
+  document.getElementById("div2Output").innerHTML = text;
+}
+
+function calculateSemesterGPA(){
+  // formula: (E = C * (A+D) - AB) / D
+  oldGPA = Number(document.getElementById("div1OldGPA").value);
+  oldCredit = Number(document.getElementById("div1OldCredit").value);
+  targetGPA = Number(document.getElementById("div3TargetGPA").value);
+  semesterCredit = Number(document.getElementById("div3SemesterCredit").value);
+
+  var a = oldCredit + semesterCredit, b = oldGPA * oldCredit;
+
+  semesterGPA = ((targetGPA * a) - (b)) / (semesterCredit * 1.0);
+  document.getElementById("div3Output").innerHTML = Math.round(semesterGPA * 100) / 100;
+}
+
+function calculateSemesterCredit(){
+  // formula: D = (CA - AB) / (E - C)
+  oldGPA = Number(document.getElementById("div1OldGPA").value);
+  oldCredit = Number(document.getElementById("div1OldCredit").value);
+  targetGPA = Number(document.getElementById("div4TargetGPA").value);
+  semesterGPA = Number(document.getElementById("div4SemesterGPA").value);
+
+  semesterCredit = ((targetGPA * oldCredit) - (oldCredit * oldGPA)) / (semesterGPA - targetGPA);
+
+  document.getElementById("div4Output").innerHTML = Math.round(semesterCredit * 100) / 100;
+}
+
+
+function clearDiv2(){
+  document.getElementById("div2Output").innerHTML="";
+}
+
+function hideForm(){
+  document.getElementById("form2").style.display="none";
+  document.getElementById("form3").style.display="none";
+  document.getElementById("form4").style.display="none";
+}
+
+function showForm(){
+  document.getElementById("form2").style.display="block";
+  document.getElementById("form3").style.display="block";
+  document.getElementById("form4").style.display="block";
+}
+
+
+</script>
+
+    </div>
+  </div>
+
+</body>
+</html>
